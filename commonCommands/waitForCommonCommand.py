@@ -9,17 +9,20 @@ class WaitForCommonCommand(IWaitCommand):
     def __init__(self,driver:webdriver.Chrome):
         super().__init__(driver)
 
-    def waitById(self,id:str,time=super().waitTime):
+    def waitById(self,id:str,time=0):
+        if time==0:time=self.waitTime
         WebDriverWait(self.driver,time).until(
             expected_conditions.visibility_of_element_located((By.ID,id))
         );
 
-    def waitByXPath(self,xpath:str,time=super().driver):
+    def waitByXPath(self,xpath:str,time=0):
+        if time==0:time=self.waitTime
         WebDriverWait(self.driver,time).until(
             expected_conditions.visibility_of_element_located((By.XPATH,xpath))
         );
 
-    def waitByCssSelector(self,selector:str,time=super().waitTime):
+    def waitByCssSelector(self,selector:str,time=0):
+        if time==0:time=self.waitTime;
         WebDriverWait(self.driver,time).until(
             expected_conditions.visibility_of_element_located((By.CSS_SELECTOR,selector))
         );

@@ -6,3 +6,6 @@ from commonCommands.waitForCommonCommand import WaitForCommonCommand
 class ReadCommand:
     def __init__(self) -> None:
         pass
+
+    def getScoresPage(self)->webdriver.Chrome:
+        
